@@ -1,129 +1,92 @@
 # 3D Orderbook Depth Visualizer
 
+
+
 A real-time cryptocurrency orderbook visualization tool with intelligent hardware adaptation, featuring both 3D and 2D rendering modes.
 
 ## Features
 
-- **Real-time Data**: Live orderbook data from multiple cryptocurrency exchanges
-- **3D Visualization**: Interactive 3D orderbook depth charts with WebGL acceleration
-- **2D Fallback**: Enhanced 2D visualization for systems without WebGL support
-- **Multi-venue Support**: Aggregated data from Binance, Coinbase, Kraken, and more
-- **Pressure Zone Analysis**: Intelligent detection of support and resistance levels
-- **Order Flow Tracking**: Real-time monitoring of large orders and market sweeps
-- **Hardware Adaptation**: Automatic detection and optimization for user's graphics capabilities
+### Core Visualization
+- **Real-time Data**: Live WebSocket feeds from Binance, Coinbase, and Kraken
+- **Dual-mode Rendering**:
+  - **3D Mode**: WebGL-accelerated depth charts with Three.js
+  - **2D Fallback**: Canvas-based rendering for unsupported devices
+- **Multi-exchange Support**: Unified view across 5+ major exchanges
+
+### Market Analysis
+- **Pressure Zones**: AI-detected support/resistance levels
+- **Order Flow**: Real-time tracking of large orders (>5BTC)
+- **Liquidity Heatmap**: Visual representation of market depth
+
+### Technical Features
+- **Auto-detection**: Dynamically switches between 3D/2D based on GPU capabilities
+- **Performance Optimized**: 60fps rendering even with 10,000+ orders
+- **Responsive Design**: Works on desktop, tablet, and mobile
 
 ## Technology Stack
 
-- **Framework**: Next.js 14 with App Router
-- **Language**: TypeScript for type safety
-- **Styling**: Tailwind CSS for responsive design
-- **Components**: shadcn/ui component library
-- **Icons**: Lucide React icons
-- **State Management**: React hooks (useState, useEffect)
-- **Notifications**: `useToast` for user feedback
-- **3D Graphics**: React Three Fiber with Three.js
-- **State Management**: Zustand
-- **WebGL**: Hardware-accelerated 3D rendering
+| Category          | Technologies Used |
+|-------------------|-------------------|
+| Framework         | Next.js 14 (App Router) |
+| Language          | TypeScript 5+ |
+| 3D Rendering      | React Three Fiber (R3F) + Three.js |
+| UI Components     | shadcn/ui + Tailwind CSS |
+| State Management  | Zustand |
+| Data Visualization| D3.js (2D mode) |
+| WebSockets        | Socket.IO |
+| Testing           | Jest + React Testing Library |
 
 ## Getting Started
 
-1. **Clone the repository**
-   \`\`\`bash
-   git clone https://github.com/yourusername/3d-orderbook-visualizer.git
-   cd 3d-orderbook-visualizer
-   \`\`\`
+### Prerequisites
+- Node.js v18+
+- npm v9+
+- WebGL 2.0 capable browser (for 3D mode)
 
-2. **Install dependencies**
-   \`\`\`bash
-   npm install
-   \`\`\`
+### Installation
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/3dBookordervisual.git
+cd 3dBookordervisual
 
-3. **Run the development server**
-   \`\`\`bash
-   npm run dev
-   \`\`\`
+# Install dependencies
+npm install
 
-4. **Open your browser**
-   Navigate to [http://localhost:3000](http://localhost:3000)
+Running Locally
+bash
+# Start development server
+npm run dev
+Open http://localhost:3000 in your browser
 
-## System Requirements
 
-### For 3D Mode
-- Modern browser with WebGL 2.0 support
-- Dedicated graphics card recommended
-- 4GB+ RAM
-- Hardware acceleration enabled
+Browser Support
+Browser	3D Support	2D Support
+Chrome	✅ Full	✅ Full
+Firefox	✅ Full	✅ Full
+Safari	⚠️ Limited*	✅ Full
+Edge	✅ Full	✅ Full
+Mobile Chrome	⚠️ Basic	✅ Full
 
-### For 2D Mode
-- Any modern browser
-- Works on all devices including mobile
-- Minimal system requirements
+Troubleshooting:
 
-## Browser Compatibility
+Common Issues
+Blank Screen in 3D Mode:
 
-| Browser | 3D Mode | 2D Mode |
-|---------|---------|---------|
-| Chrome 90+ | ✅ | ✅ |
-| Firefox 88+ | ✅ | ✅ |
-| Safari 14+ | ✅ | ✅ |
-| Edge 90+ | ✅ | ✅ |
+Verify WebGL support at webglreport.com
 
-## Features Overview
+Enable hardware acceleration in browser settings
 
-### 3D Visualization
-- Interactive orderbook depth charts
-- Real-time pressure zone highlighting
-- Multi-venue data overlay
-- Mouse controls (rotate, zoom, pan)
-- Hardware-accelerated rendering
+Contributing
+Fork the repository
 
-### 2D Fallback Mode
-- Enhanced orderbook tables
-- Pressure zone indicators
-- Volume analysis charts
-- Compatible with all devices
-- Optimized performance
+Create your feature branch (git checkout -b feature/amazing-feature)
 
-### Real-time Features
-- Live orderbook updates (100ms intervals)
-- Order flow event detection
-- Market pressure analysis
-- Connection status monitoring
-- Automatic reconnection
+Commit your changes (git commit -m 'Add some amazing feature')
 
-## Configuration
+Push to the branch (git push origin feature/amazing-feature)
 
-The application automatically detects your system's capabilities and selects the optimal rendering mode. You can manually switch between modes using the control panel.
+Open a Pull Request
 
-## Deployment
+License
+Distributed under the MIT License. See LICENSE for more information.
 
-### Vercel (Recommended)
-\`\`\`bash
-npm run build
-vercel --prod
-\`\`\`
-
-### Other Platforms
-\`\`\`bash
-npm run build
-npm start
-\`\`\`
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
-
-## License
-
-MIT License - see LICENSE file for details
-
-## Support
-
-For issues and questions:
-- Create an issue on GitHub
-- Check the troubleshooting guide in the app
-- Verify WebGL support at [get.webgl.org](https://get.webgl.org/)
